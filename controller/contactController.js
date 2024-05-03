@@ -4,6 +4,7 @@ const createContact = async (req, res) => {
     console.log(req.body);
     const { name, phone, email } = req.body;
 
+    //if the fiels are empty it will show this message. 
     if (!name || !phone || !email) {
         return res.json({
             "success": false,
@@ -11,6 +12,7 @@ const createContact = async (req, res) => {
         })
     }
 
+    //contact number is already in use
     try {
         const existingContact = await contactModel.findOne({ phone: phone });
 

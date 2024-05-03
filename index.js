@@ -1,4 +1,4 @@
-// main server point for the application. ( main file)
+// main server point for the current application. (it is also main file)
 
 // importing the packages. (express.)
 const express = require('express');
@@ -27,11 +27,11 @@ app.get('/test', (req, res) => {
 
 //https://localhost:5000/api/contact/create
 
-//configuring routes
-app.use('/api/contact', require('./routes/contactRoutes'))
+//configuring routes 
+app.use('/api/contact', require('./routes/contactRoutes')) // routes for contact card. 
 
 
 // starting the server. 
 app.listen(PORT, () => {
-    console.log(`Server-app is running on port ${PORT}`);
+    console.log(`Server-app is running on port ${PORT}`); // defining the port in env file
 });
