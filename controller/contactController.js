@@ -28,7 +28,6 @@ const createContact = async (req, res) => {
             email: email,
         })
         await newContact.save();
-
         res.json({
             "success": true,
             "message": "Contact card is created successfully"

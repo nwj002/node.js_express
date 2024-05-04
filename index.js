@@ -21,15 +21,12 @@ const PORT = process.env.PORT;
 
 //making a test endpoint. 
 // EndPoints : POST, GET, PUT, DELETE
-app.get('/test', (req, res) => {
-    res.send('Hello World, test api is working.');
-})
 
 //https://localhost:5000/api/contact/create
 
 //configuring routes 
-app.use('/api/contact', require('./routes/contactRoutes')) // routes for contact card. 
-
+app.use('/api/contact', require('./routes/contactRoutes'));// routes for contact card. 
+app.use('/api/reservation', require('./routes/reservationRoutes'));
 
 // starting the server. 
 app.listen(PORT, () => {
