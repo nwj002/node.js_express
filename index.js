@@ -27,6 +27,7 @@ const PORT = process.env.PORT;
 //configuring routes 
 app.use('/api/contact', require('./routes/contactRoutes'));// routes for contact card. 
 app.use('/api/reservation', require('./routes/reservationRoutes'));
+app.use('/api/appointment', require('./routes/appointmentRoutes'));
 
 // starting the server. 
 app.listen(PORT, () => {
