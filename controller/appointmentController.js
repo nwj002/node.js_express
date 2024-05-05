@@ -1,3 +1,4 @@
+const express = require('express');
 const appointmentModel = require('../model/appointmentModel');
 
 const bookAppointment = async (req, res) => {
@@ -20,12 +21,16 @@ const bookAppointment = async (req, res) => {
     }
 
     try {
+        const { date, time } = req.body;
+        if (!date || !time || !isValidDateFormat(date) || !isValidTimeFormat(time)) {
+            return res.json({ "success": false, "message": "Invalid date or time format." });
+        }
         const existingAppointment = await appointmentModel.findOne({ date: date, time: time })
 
         if (existingAppointment) {
             return res.json({
                 'status': false,
-                'message': 'Booking Already Exist!'
+                'message': 'Booking Date and Time Already Exist!'
             })
         }
 
@@ -50,6 +55,18 @@ const bookAppointment = async (req, res) => {
 
     }
 }
+
+// Function to validate date format 'YYYY-MM-DD'
+const isValidDateFormat = (dateString) => {
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    return regex.test(dateString);
+};
+
+// Function to validate time format 'HH:mm'
+const isValidTimeFormat = (timeString) => {
+    const regex = /^([01]\d|2[0-3]):([0-5]\d)$/;
+    return regex.test(timeString);
+};
 
 module.exports = {
     bookAppointment
