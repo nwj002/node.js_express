@@ -19,11 +19,6 @@ connectDatabase()
 //defining the port 
 const PORT = process.env.PORT;
 
-//making a test endpoint. 
-// EndPoints : POST, GET, PUT, DELETE
-
-//https://localhost:5000/api/contact/create
-
 //configuring routes 
 app.use('/api/contact', require('./routes/contactRoutes'));// routes for contact card. 
 app.use('/api/reservation', require('./routes/reservationRoutes'));
