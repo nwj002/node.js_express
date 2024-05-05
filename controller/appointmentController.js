@@ -23,7 +23,10 @@ const bookAppointment = async (req, res) => {
     try {
         const { date, time } = req.body;
         if (!date || !time || !isValidDateFormat(date) || !isValidTimeFormat(time)) {
-            return res.json({ "success": false, "message": "Invalid date or time format." });
+            return res.json({
+                "success": false,
+                "message": "Invalid date or time format."
+            });
         }
         const existingAppointment = await appointmentModel.findOne({ date: date, time: time })
 
